@@ -36,10 +36,10 @@ public class ShotCalculator {
 
         long countOfCrystals = Long.valueOf(args[2]);
         minusCrystalCountValidator.validate(countOfCrystals);
-        countOfCrystals = countOfCrystals / 2 * 2;
 
         ShotType shotTypeEnum = ShotType.valueOf(shotType);
         if (ShotType.BLESSED_SPIRITSHOT == shotTypeEnum) {
+            countOfCrystals = countOfCrystals / 2 * 2;
             blessedSpiritShotCrystalCountValidator.validate(countOfCrystals);
         }
 
