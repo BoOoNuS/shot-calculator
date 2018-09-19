@@ -32,7 +32,7 @@ public class SSpiritShotStrategy implements ShotStrategy {
     public OutputContext calculate(long crystalCount) {
         OutputContext outputContext = new OutputContext();
         outputContext.setCountOfSpiritOre(crystalCount * 15);
-        outputContext.setCountOfShotsInOut(crystalCount * 200);
+        outputContext.setCountOfShotsInOut(crystalCount * 350);
         outputContext.setCostInAdena(crystalCount * SPIRIT_ORE_PRICE * 15);
         return outputContext;
     }
