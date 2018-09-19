@@ -1,11 +1,14 @@
 package ua.nure.shot.calculator;
 
-import ua.nure.shot.calculator.engine.CalculationEngine;
 import ua.nure.shot.calculator.model.OutputContext;
 import ua.nure.shot.calculator.model.ShotContext;
 import ua.nure.shot.calculator.model.ShotGrade;
 import ua.nure.shot.calculator.model.ShotType;
-import ua.nure.shot.calculator.validator.*;
+import ua.nure.shot.calculator.validator.ArgumentCountValidator;
+import ua.nure.shot.calculator.validator.NumberValidator;
+import ua.nure.shot.calculator.validator.ShotGradeValidator;
+import ua.nure.shot.calculator.validator.ShotTypeValidator;
+import ua.nure.shot.calculator.validator.Validator;
 
 /**
  * Created on 18.09.2018.
@@ -18,11 +21,7 @@ public class ShotCalculator {
     private static Validator<Object> shotGradeValidator = ShotGradeValidator.getInstance();
     private static Validator<Object> shotTypeValidator = ShotTypeValidator.getInstance();
     private static Validator<Object> numberValidator = NumberValidator.getInstance();
-    private static Validator<Long> minusCrystalCountValidator = MinusCrystalCountValidator.getInstance();
-    private static Validator<Long> blessedSpiritShotCrystalCountValidator =
-            BlessedSpiritShotCrystalCountValidator.getInstance();
-
-    private static CalculationEngine calculationEngine = CalculationEngine.getInstance();
+    private static CalculationProcessor calculationProcessor = CalculationProcessor.getInstance();
 
     public static void main(String[] args) {
         argumentsCountValidator.validate(args.length);
@@ -34,19 +33,8 @@ public class ShotCalculator {
         shotTypeValidator.validate(shotType);
         numberValidator.validate(args[2]);
 
-        long countOfCrystals = Long.valueOf(args[2]);
-        minusCrystalCountValidator.validate(countOfCrystals);
-
-        ShotType shotTypeEnum = ShotType.valueOf(shotType);
-        if (ShotType.BLESSED_SPIRITSHOT == shotTypeEnum) {
-            countOfCrystals = countOfCrystals / 2 * 2;
-            blessedSpiritShotCrystalCountValidator.validate(countOfCrystals);
-        }
-
-        ShotContext shotContext =
-                new ShotContext(ShotGrade.valueOf(shotGrade), shotTypeEnum, countOfCrystals);
-
-        OutputContext outputContext = calculationEngine.calculate(shotContext);
+        OutputContext outputContext =
+            calculationProcessor.process(ShotGrade.valueOf(shotGrade), ShotType.valueOf(shotType), Long.valueOf(args[2]));
         Printer.print(outputContext);
     }
 
