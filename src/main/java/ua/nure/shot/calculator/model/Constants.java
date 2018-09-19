@@ -11,7 +11,9 @@ public final class Constants {
         throw new UnsupportedOperationException("You can not create util class");
     }
 
-    public static final int SPIRIT_ORE_PRICE = 250;
+    public static final int SPIRIT_ORE_PRICE = 440;
+
+    public static final int SOUL_ORE_PRICE = 275;
 
     public static final class Messages {
 

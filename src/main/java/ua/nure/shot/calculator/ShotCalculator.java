@@ -51,7 +51,7 @@ public class ShotCalculator {
             System.out.println("===========================================================================================================");
             System.out.println("Output data:");
             System.out.println("\tCost in adena - " + outputContext.getCostInAdena());
-            System.out.println("\tCount of soul ore - " + outputContext.getCountOfSoulOre());
+            System.out.println("\tCount of soul ore - " + outputContext.getCountOfSpiritOre());
             System.out.println("\tCount of shots as a result - " + outputContext.getCountOfShotsInOut());
             System.out.println("===========================================================================================================");
         }

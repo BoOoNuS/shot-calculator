@@ -31,9 +31,9 @@ public class BSpiritShotStrategy implements ShotStrategy {
     @Override
     public OutputContext calculate(long crystalCount) {
         OutputContext outputContext = new OutputContext();
-        outputContext.setCountOfSoulOre(crystalCount * 15);
+        outputContext.setCountOfSpiritOre(crystalCount * 15);
         outputContext.setCountOfShotsInOut(crystalCount * 150);
-        outputContext.setCostInAdena(crystalCount * SPIRIT_ORE_PRICE);
+        outputContext.setCostInAdena(crystalCount * SPIRIT_ORE_PRICE * 15);
         return outputContext;
     }
 }

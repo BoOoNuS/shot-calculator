@@ -18,7 +18,7 @@ public class OutputContext {
 
     private long costInAdena;
 
-    private long countOfSoulOre;
+    private long countOfSpiritOre;
 
     private long countOfShotsInOut;
 }
